@@ -19,3 +19,15 @@
 .lh-condensed {
   line-height: 1.25;
 }
+
+.login-container{
+  padding-left: 28%;
+  padding-right: 28%;
+}
+
+@media only screen and (max-width: 700px) {
+  .login-container{
+  padding-left: 7%;
+  padding-right: 7%;
+  }
+}

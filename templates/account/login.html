@@ -32,7 +32,7 @@
 
 {% block content %}
     <div class="row">
-      <div class="container" style="padding-left: 28%; padding-right: 28%;">
+      <div class="container login-container">
         <div class="col-md-12 order-md-1">
           <form class="needs-validation login" method="POST" action="{% url 'account_login' %}">
             {% csrf_token %}
