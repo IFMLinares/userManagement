@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "Signup" %}{% endblock %}
+
+{% block message %}
+<div class="py-5 text-center">
+  <!-- <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
+  <h2>Registro De usuarios</h2>
+  <p class="lead">
+    {% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
+  </p>
+</div>
+{% endblock %}
+
+{% block content %}
+    
+    <div class="row">
+      <div class="container" style="padding-left: 15%; padding-right: 15%;">
+        <div class="col-md-12 order-md-1">
+          <form class="needs-validation signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+            {% csrf_token %}
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="firstName">Nombres</label>
+                <input type="text" class="form-control" name="first_name" placeholder="Nombres" maxlength="240" required id="id_first_name">
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="lastName">Apellidos</label>
+                <input type="text" class="form-control" name="last_name" placeholder="Apellidos" maxlength="240" required id="id_last_name">
+                <div class="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="username">Nombre de usuario</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
+                <input type="text" class="form-control" name="username" placeholder="Usuario" autofocus="autofocus" minlength="5" maxlength="150" required id="id_username">
+                <div class="invalid-feedback" style="width: 100%;">
+                  Your username is required.
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="email">Email <span class="text-muted"></span></label>
+              <input type="email" class="form-control" name="email" placeholder="Correo electrónico" required id="id_email">
+              <div class="invalid-feedback">
+                Please enter a valid email address for shipping updates.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="email">Repite Email <span class="text-muted"></span></label>
+              <input type="email" class="form-control"  name="email2" placeholder="Confirmación de la dirección de correo electrónico" required id="id_email2">
+              <div class="invalid-feedback">
+                Please enter a valid email address for shipping updates.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="email">Contraseña <span class="text-muted"></span></label>
+              <input type="password" class="form-control" name="password1" placeholder="Contraseña" required id="id_password1">
+              <div class="invalid-feedback">
+                Please enter a valid email address for shipping updates.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="email">Contraseña (de nuevo)<span class="text-muted"></span></label>
+              <input type="password" class="form-control" name="password2" placeholder="Contraseña (de nuevo)" required id="id_password2">
+              <div class="invalid-feedback">
+                Please enter a valid email address for shipping updates.
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-5 mb-3">
+                <label for="country">Tipo de Usuario</label>
+                <select class="custom-select d-block w-100" name="user_type" placeholder="Tipo de Usuario" maxlength="240" required id="id_user_type">
+                  <option>Usuario</option>
+                  <option>Ecommerce</option>
+                </select>
+                <div class="invalid-feedback">
+                  Por favor selecciona un usuario
+                </div>
+              </div>
+            </div>
+            <hr class="mb-4">
+            {% if redirect_field_value %}
+              <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              {% for key, value in form.errors.items %}
+                {% if key != '__all__' %}{{ key }} {% endif %}{{ value }}
+              {% endfor %}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}
+{% block extrajs %}
+  <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function() {
+        'use strict';
+
+        window.addEventListener('load', function() {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('needs-validation');
+
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+  </script>
+{% endblock %}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de Usuarios: {% block title %}{% endblock %}</title>
+
+    {% load static %}
+    <!-- favicon -->
+    <link rel="icon" href="" type="image/png" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+</head>
+<body>
+    <div class="bg-light">
+        <div class="container">
+          <div class="py-5 text-center">
+                {% block message %}
+                <!-- here goes the dynamic information -->
+                {% endblock %}
+                {% block content %}
+                    <!-- here goes the dynamic information -->
+                {% endblock %}
+    <footer class="my-5 pt-5 text-muted text-center text-small" style="bottom: 0px;">
+        <p class="mb-1">&copy;</p>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="#">Privacy</a></li>
+          <li class="list-inline-item"><a href="#">Terms</a></li>
+          <li class="list-inline-item"><a href="#">Support</a></li>
+        </ul>
+      </footer>
+    </div>
+  </div>
+
+    <!-- Javascript -->
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}js"></script>
+    <script src="{% static 'js/vendor/popper.min.js' %}'"></script>
+    <script src="{% static 'js/vendor/holder.min.js' %}js"></script>
+    {% block extrajs %}
+    <!-- here are the extra scripts -->
+    {% endblock %}
+</body>
+</html>

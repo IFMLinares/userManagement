@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block title %}{% trans "Sign In" %}{% endblock %}
+
+{% block message %}
+  <div class="py-5 text-center">
+      <!-- <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
+      <h2>{% trans "Sign In" %}</h2>
+      <p class="lead">
+        {% if socialaccount_providers %}
+        <p>{% blocktrans with site.name as site_name %}Please sign in with one
+        of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
+        for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
+        <div class="socialaccount_ballot">
+          <ul class="socialaccount_providers">
+            {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+          </ul>
+          <div class="login-or">{% trans 'or' %}</div>
+        </div>
+        {% include "socialaccount/snippets/login_extra.html" %}
+
+        {% else %}
+        {% blocktrans %}Si aún no ha creado una cuenta, regístrese 
+        <a href="{{ signup_url }}">regístrese</a> primero.{% endblocktrans %}
+        {% endif %}
+      </p>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+      <div class="container" style="padding-left: 28%; padding-right: 28%;">
+        <div class="col-md-12 order-md-1">
+          <form class="needs-validation login" method="POST" action="{% url 'account_login' %}">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="id_login">Nombre de usuario o correo electrónico <span class="text-muted"></span></label>
+              <input type="text" class="form-control" name="login" placeholder="Nombre de usuario o correo electrónico" autofocus="autofocus" required id="id_login">
+              <div class="invalid-feedback">
+                Por favor ingrese un Nombre de usuario o correo electrónico valido
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="id_password">Contraseña <span class="text-muted"></span></label>
+              <input type="password" class="form-control" name="password" placeholder="Contraseña" required id="id_password">
+              <div class="invalid-feedback">
+                Contraseña invalida
+              </div>
+            </div>
+            <hr class="mb-4">
+            {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+            {% if form.errors.items %}
+              {% for key, value in form.errors.items %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                {% if key != '__all__' %}{{ key }} {% endif %}{{ value }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              </div>
+              {% endfor %}
+            {% endif %}
+            <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+          </form>
+        </div>
+      </div>
+    </div>
+{% endblock %}
+{% block extrajs %}
+  <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function() {
+        'use strict';
+
+        window.addEventListener('load', function() {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('needs-validation');
+
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+  </script>
+{% endblock %}
