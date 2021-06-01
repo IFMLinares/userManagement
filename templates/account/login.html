@@ -36,14 +36,14 @@
         <div class="col-md-12 order-md-1">
           <form class="needs-validation login" method="POST" action="{% url 'account_login' %}">
             {% csrf_token %}
-            <div class="mb-3">
+            <div class="mb-3 text-left">
               <label for="id_login">Nombre de usuario o correo electrónico <span class="text-muted"></span></label>
               <input type="text" class="form-control" name="login" placeholder="Nombre de usuario o correo electrónico" autofocus="autofocus" required id="id_login">
               <div class="invalid-feedback">
                 Por favor ingrese un Nombre de usuario o correo electrónico valido
               </div>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 text-left">
               <label for="id_password">Contraseña <span class="text-muted"></span></label>
               <input type="password" class="form-control" name="password" placeholder="Contraseña" required id="id_password">
               <div class="invalid-feedback">

@@ -15,13 +15,12 @@
 {% endblock %}
 
 {% block content %}
-    
     <div class="row">
       <div class="container" style="padding-left: 15%; padding-right: 15%;">
         <div class="col-md-12 order-md-1">
           <form class="needs-validation signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
             {% csrf_token %}
-            <div class="row">
+            <div class="row  text-left">
               <div class="col-md-6 mb-3">
                 <label for="firstName">Nombres</label>
                 <input type="text" class="form-control" name="first_name" placeholder="Nombres" maxlength="240" required id="id_first_name">
@@ -37,7 +36,7 @@
                 </div>
               </div>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 text-left">
               <label for="username">Nombre de usuario</label>
               <div class="input-group">
                 <div class="input-group-prepend">
@@ -49,35 +48,35 @@
                 </div>
               </div>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 text-left">
               <label for="email">Email <span class="text-muted"></span></label>
               <input type="email" class="form-control" name="email" placeholder="Correo electrónico" required id="id_email">
               <div class="invalid-feedback">
                 Please enter a valid email address for shipping updates.
               </div>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 text-left">
               <label for="email">Repite Email <span class="text-muted"></span></label>
               <input type="email" class="form-control"  name="email2" placeholder="Confirmación de la dirección de correo electrónico" required id="id_email2">
               <div class="invalid-feedback">
                 Please enter a valid email address for shipping updates.
               </div>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 text-left">
               <label for="email">Contraseña <span class="text-muted"></span></label>
               <input type="password" class="form-control" name="password1" placeholder="Contraseña" required id="id_password1">
               <div class="invalid-feedback">
                 Please enter a valid email address for shipping updates.
               </div>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 text-left">
               <label for="email">Contraseña (de nuevo)<span class="text-muted"></span></label>
               <input type="password" class="form-control" name="password2" placeholder="Contraseña (de nuevo)" required id="id_password2">
               <div class="invalid-feedback">
                 Please enter a valid email address for shipping updates.
               </div>
             </div>
-            <div class="row">
+            <div class="row text-left">
               <div class="col-md-5 mb-3">
                 <label for="country">Tipo de Usuario</label>
                 <select class="custom-select d-block w-100" name="user_type" placeholder="Tipo de Usuario" maxlength="240" required id="id_user_type">
