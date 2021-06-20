@@ -1,8 +1,8 @@
-{% extends "account/base.html" %}
+{% extends "base.html" %}
 
 {% load i18n %}
-
-{% block head_title %}{% trans "E-mail Addresses" %}{% endblock %}
+{% load crispy_forms_tags %}
+{% block title %}{% trans "E-mail Addresses" %}{% endblock %}
 
 {% block content %}
     <h1>{% trans "E-mail Addresses" %}</h1>
@@ -31,9 +31,11 @@
   {% endfor %}
 
 <div class="buttonHolder">
-      <button class="secondaryAction" type="submit" name="action_primary" >{% trans 'Make Primary' %}</button>
-      <button class="secondaryAction" type="submit" name="action_send" >{% trans 'Re-send Verification' %}</button>
-      <button class="primaryAction" type="submit" name="action_remove" >{% trans 'Remove' %}</button>
+      <button class="secondaryAction btn btn-primary" type="submit" name="action_primary" >{% trans 'Make Primary' %}</button>
+      <button class="secondaryAction btn btn-secondary" type="submit" name="action_send" >{% trans 'Re-send Verification' %}</button>
+      <button class="primaryAction btn btn-danger" type="submit" name="action_remove" >{% trans 'Remove' %}</button>
+      <br>
+      <a href="{% url 'core:home' %}" class="btn btn-success" style="margin-top: 5px;">Regresar</a>
 </div>
 
 </fieldset>
@@ -49,8 +51,9 @@
 
     <form method="post" action="{% url 'account_email' %}" class="add_email">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form|crispy }}
         <button name="action_add" type="submit">{% trans "Add E-mail" %}</button>
+        <br>
     </form>
   {% endif %}
 

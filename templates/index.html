@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Perfil de Usuario
+{% endblock %}
+{% load static %}
+
+{% block content %}
+<main role="main">
+
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Perfil de usuario</h1>
+            <p class="text-center">
+                Nombres: {{ user.first_name }} <br>
+                Apellidos: {{ user.last_name }} <br>
+                Tipo de Usuario: {{ user.user_type }} <br>
+                Nombre de usuario: {{ user.username }} <br>
+                Correo Electrónico: {{ user.email }} <br>
+            </p>
+            <a href="{% url 'account_change_password' %}" class="btn btn-secondary my-2">
+                Cambiar ontraseña
+            </a>
+            <a href="{% url 'account_email' %}" class="btn btn-secondary my-2">
+                Cambiar Email
+            </a>
+            {% if user.is_staff %}
+                <a href="/admin" class="btn btn-primary my-2" target="_blank">
+                    Administrador de usuarios
+                </a>
+            {% endif %}
+        </div>
+    </section>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                        <img class="card-img-top"
+                            src="{% static 'img/thumbnail.svg' %}"
+                            alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text">Tarjeta de presentación de producto</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Editar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                        <img class="card-img-top"
+                            src="{% static 'img/thumbnail.svg' %}"
+                            alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text">Tarjeta de presentación de producto</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Editar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                        <img class="card-img-top"
+                            src="{% static 'img/thumbnail.svg' %}"
+                            alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text">Tarjeta de presentación de producto</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Editar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+{% endblock %}

@@ -144,7 +144,7 @@ AUTHENTICATION_BACKENDS = (
 AUTH_USER_MODEL = 'core.User'
 # Django Allauth Settings
 SITE_ID = 1
-LOGIN_REDIRECT_URL = '/admin'
+LOGIN_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 
 ACCOUNT_SIGNUP_FORM_CLASS = 'apps.core.forms.signUpForm.SignupForm'
