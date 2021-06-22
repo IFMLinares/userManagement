@@ -26,7 +26,7 @@ SECRET_KEY = ')1f5gs72kk97fy@f8hfuixuf9cjyq38v6@46@ce+j#ycsdpkk+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'ifmlinares.pythonanywhere.com']
+ALLOWED_HOSTS = ['localhost', 'ifmlinares.pythonanywhere.com', 'desarrollowowbibi.com']
 
 
 # Application definition
@@ -157,7 +157,7 @@ ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_SIGNUP_REDIRECT_URL = LOGIN_REDIRECT_URL
 ACCOUNT_USERNAME_MIN_LENGTH = 5
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_EMAIL_VERIFICATION = "optional"
 EMAIL_TIMEOUT = 5
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
