@@ -13,9 +13,20 @@ POSTGRESQL = {
     'default': {
         'ENGINE': 'django.db.backends.postgreslq_psycopg2',
         'NAME': 'db',
-        'USER': 'postgre',
-        'PASSWORD': '12345',
+        'USER': '',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': 5432
+    }
+}
+
+MYSQL = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'user_management_django',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': ''
     }
 }

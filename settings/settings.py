@@ -90,7 +90,7 @@ WSGI_APPLICATION = 'settings.wsgi.application'
 # Database // Base de Datos
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = db.SQLITE
+DATABASES = db.MYSQL
 
 
 # Password validation
